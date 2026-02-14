@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Buu Buu ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-heart">💖</div>
+    </div>
+
+    <!-- Popup Modal -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-content">
+            <div class="popup-heart">💕</div>
+
+            <button class="popup-btn" onclick="closePopup()">Let's Go! ✨</button>
+        </div>
+    </div>
+
+    <!-- Particles Background -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Music Control -->
+    <div class="music-control" id="musicControl" onclick="toggleMusic()">
+        <div class="music-icon">🎵</div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- YouTube Player (Hidden) -->
+    <div id="ytplayer"></div>
+
+    <!-- Welcome Screen -->
+    <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-title-container">
+            <h1>For Buu Buu</h1>
+            <div class="subtitle">A Journey Through My Heart</div>
+        </div>
+        <p>
+            Hey Buu Buu, I want you to know something really important...
+            <br><br>
+            I don't need Valentine's Day or any special occasion to celebrate you. 
+            Every single day with you feels like Valentine's Day to me.
+            <br><br>
+            This is a little interactive journey to show you exactly why.
+        </p>
+        <button class="start-btn" onclick="startJourney()">
+            <span style="position: relative; z-index: 1;">Begin Journey</span>
+        </button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <div class="container">
+            <!-- Puzzle 1: Heart Memory Game -->
+            <div class="puzzle-card" id="puzzle1">
+                <div class="puzzle-header">
+                    <div class="puzzle-number">Memory One</div>
+                    <h2 class="puzzle-title">Match My Feelings</h2>
+                    <p class="puzzle-instruction">Find the matching heart pairs - just like how we match perfectly ✨</p>
+                </div>
+                <div class="interactive-grid" id="heartMatcher"></div>
+                <div class="success-animation" id="check1"></div>
+                <div class="reveal-content" id="reveal1">
+                    <div class="memory-badge">What I Love About You</div>
+                    <p class="reason-text">
+                        <span class="sparkle">✨</span>
+                        Your smile is the most beautiful thing I've ever seen. It lights up my entire world and makes even the darkest days feel bright. When you smile at me, I forget everything else that exists.
+                        <span class="sparkle">✨</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Puzzle 2: Message Builder -->
+            <div class="puzzle-card" id="puzzle2">
+                <div class="puzzle-header">
+                    <div class="puzzle-number">Memory Two</div>
+                    <h2 class="puzzle-title">Build Our Message</h2>
+                    <p class="puzzle-instruction">Tap the words in order to say something sweet 💕</p>
+                </div>
+                <div class="word-tiles" id="wordPuzzle"></div>
+                <div class="success-animation" id="check2"></div>
+                <div class="reveal-content" id="reveal2">
+                    <div class="memory-badge">Our Connection</div>
+                    <p class="reason-text">
+                        <span class="sparkle">✨</span>
+                        The way you understand me without me having to say a word is incredible. You see the real me - all my imperfections, all my quirks - and you love me anyway. That's something truly special.
+                        <span class="sparkle">✨</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Puzzle 3: Find Hidden Hearts -->
+            <div class="puzzle-card" id="puzzle3">
+                <div class="puzzle-header">
+                    <div class="puzzle-number">Memory Three</div>
+                    <h2 class="puzzle-title">Find All The Hearts</h2>
+                    <p class="puzzle-instruction">Click all 5 hidden hearts to unlock this memory 💖</p>
+                </div>
+                <div class="interactive-grid" id="hiddenHearts"></div>
+                <div class="success-animation" id="check3"></div>
+                <div class="reveal-content" id="reveal3">
+                    <div class="memory-badge">Your Beautiful Spirit</div>
+                    <p class="reason-text">
+                        <span class="sparkle">✨</span>
+                        Your kindness to everyone around you makes me fall for you more every day. The way you care about others, the way you make people feel valued - you inspire me to be better.
+                        <span class="sparkle">✨</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Puzzle 4: Hidden Message -->
+            <div class="puzzle-card" id="puzzle4">
+                <div class="puzzle-header">
+                    <div class="puzzle-number">Memory Four</div>
+                    <h2 class="puzzle-title">Discover What's Hidden</h2>
+                    <p class="puzzle-instruction">Reveal each word to uncover my message to you</p>
+                </div>
+                <div class="word-tiles" id="hiddenWords"></div>
+                <div class="success-animation" id="check4"></div>
+                <div class="reveal-content" id="reveal4">
+                    <div class="memory-badge">Your Joy</div>
+                    <p class="reason-text">
+                        <span class="sparkle">✨</span>
+                        Your laughter is my favorite sound in the entire world. It's contagious, it's genuine, and it can turn my worst days into the best ones. I never want to stop making you laugh.
+                        <span class="sparkle">✨</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Puzzle 5: Final Challenge -->
+            <div class="puzzle-card" id="puzzle5">
+                <div class="puzzle-header">
+                    <div class="puzzle-number">Memory Five</div>
+                    <h2 class="puzzle-title">Count Our Love</h2>
+                    <p class="puzzle-instruction">How many hearts represent my love for you?</p>
+                </div>
+                <div class="interactive-grid" id="countHearts"></div>
+                <div style="display: flex; gap: 15px; justify-content: center; margin-top: 30px; flex-wrap: wrap;">
+                    <button class="word-tile" onclick="checkCount(5)">5 Hearts</button>
+                    <button class="word-tile" onclick="checkCount(7)">7 Hearts</button>
+                    <button class="word-tile" onclick="checkCount(9)">9 Hearts</button>
+                </div>
+                <div class="success-animation" id="check5"></div>
+                <div class="reveal-content" id="reveal5">
+                    <div class="memory-badge">Every Moment With You</div>
+                    <p class="reason-text">
+                        <span class="sparkle">✨</span>
+                        You make ordinary moments feel extraordinary. Whether we're doing something amazing or just sitting together doing nothing, everything is better when I'm with you. You are my home, Buu Buu.
+                        <span class="sparkle">✨</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Final Message -->
+            <div class="final-message" id="finalMessage">
+                <h2>Every Day is <span class="highlight">Valentine's Day</span> With You</h2>
+                <p>
+                    I need you to understand something...
+                </p>
+                <p>
+                    I don't need a special date on the calendar to remind me to love you. I don't need hearts and roses and fancy dinners to show you how much you mean to me.
+                </p>
+                <p>
+                    Because <strong>every single day</strong> with you is a celebration. Every morning I wake up knowing you're in my life, every laugh we share, every quiet moment together, every adventure we go on - these are the real valentines.
+                </p>
+                <p>
+                    You are my best friend, my partner. The way you love, the way you care, the way you simply exist makes my life infinitely better.
+                </p>
+                <p>
+                    So while the world celebrates love one day a year, I celebrate you <em>every single day</em>. Today, tomorrow, and always.
+                </p>
+                <p style="font-size: 1.8rem; margin-top: 50px;">
+                    love you more than words can ever express. 
+                </p>
+                <div class="signature">
+                    Forever yours,<br>Banu😉
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script>
+</body>
+</html>
